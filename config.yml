@@ -1,0 +1,11 @@
+# configuração geral do plugin
+Config:
+
+    # configure aqui a tag do seu servidor.
+    tag: "&6[H_InventoryUtils]"
+    
+    # permitir stackar até item(s) que não podem se agrupar mais que 1 unidade?
+    stack_all: true
+    
+    # coloque aqui a quantidade maxima de item(s) que vai poder stackar
+    maxStack: 255

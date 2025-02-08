@@ -1,0 +1,6 @@
+name: H_InventoryPlus
+version: 0.1
+author: lHawk_
+description: deixa o inventário dos jogadores com maior capacidade de armazenamento.
+main: me.inventoryplus.Core
+api-version: 1.13
