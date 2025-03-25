@@ -6,6 +6,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -55,6 +56,7 @@ public class Core extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
+		HandlerList.unregisterAll(this);
 		if (task != null) task.cancel();
 		sendConsole(" ");
 		sendConsole(tag + " &cH_InventoryPlus desligado com sucesso! &6[Author lHawk_] " + version);

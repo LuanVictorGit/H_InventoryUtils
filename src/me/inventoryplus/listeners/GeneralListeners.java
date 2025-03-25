@@ -29,12 +29,12 @@ public class GeneralListeners implements Listener {
 		else if (maxStack < 64) maxStack = 64;
 	}
 	
-	@EventHandler(priority = EventPriority.HIGHEST)
+	@EventHandler(priority = EventPriority.MONITOR)
     public void onInventoryUpdate(InventoryReceiveItemEvent e) {
         Player p = e.getPlayer();
         PlayerInv pi = e.getPlayerInventory();
         ItemStack item = e.getCurrentItem();
-        if ((item.getMaxStackSize() == 1 && !stack_all) || p.getGameMode() == GameMode.CREATIVE) return;
+        if ((item.getMaxStackSize() == 1 && !stack_all) || p.getGameMode() == GameMode.CREATIVE || e.isCancelled()) return;
         Inventory inv = p.getInventory();
         ItemStack[] content = inv.getContents();
         int amountBase = InventoryUtils.getAmount(p, item);
@@ -49,6 +49,10 @@ public class GeneralListeners implements Listener {
         	while (it.getAmount() < maxStack && amount < amountBase) {
         		it.setAmount(it.getAmount() + 1);
         		amount++;
+        	}
+        	while(amount > amountBase) {
+        		it.setAmount(it.getAmount()-1);
+        		amount--;
         	}
         }
         p.updateInventory();

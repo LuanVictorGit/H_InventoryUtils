@@ -22,13 +22,11 @@ public class InventoryUtils {
 	}
 	
 	public static int getAmount(Player p, ItemStack it) {
-		if (it == null)
-			return 0;
+		if (it == null) return 0;
 		int amount = 0;
 		Inventory inv = p.getInventory();
 		for (ItemStack item : inv.getContents()) {
-			if (item == null || item.getType() == Material.AIR || !item.isSimilar(it))
-				continue;
+			if (item == null || item.getType() == Material.AIR || !item.isSimilar(it)) continue;
 			amount += item.getAmount();
 		}
 		return amount;
